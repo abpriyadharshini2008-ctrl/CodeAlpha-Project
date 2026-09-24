@@ -1,0 +1,137 @@
+STEP 1: FIRST LOOK AT THE DATA
+============================================================
+
+First 5 rows:
+   Pregnancies  Glucose  BloodPressure  SkinThickness  Insulin   BMI  DiabetesPedigreeFunction  Age  Outcome
+0            5      143             85              6       15  22.5                     0.256   34        0
+1            5       75             51             11       37  32.4                     1.872   40        0
+2            1      125             82             32       18  34.4                     0.202   21        0
+3            1       92             90             16       61  34.5                     1.197   24        0
+4            2       75             85              0       33  24.5                     1.270   48        0
+
+Shape of dataset (rows, columns): (768, 9)
+
+Column names:
+['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age', 'Outcome']
+
+============================================================
+STEP 2: DATA TYPES AND INFO
+============================================================
+<class 'pandas.DataFrame'>
+RangeIndex: 768 entries, 0 to 767
+Data columns (total 9 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   Pregnancies               768 non-null    int64  
+ 1   Glucose                   768 non-null    int64  
+ 2   BloodPressure             768 non-null    int64  
+ 3   SkinThickness             768 non-null    int64  
+ 4   Insulin                   768 non-null    int64  
+ 5   BMI                       768 non-null    float64
+ 6   DiabetesPedigreeFunction  768 non-null    float64
+ 7   Age                       768 non-null    int64
+ 8   Outcome                   768 non-null    int64  
+dtypes: float64(2), int64(7)
+memory usage: 54.1 KB
+None
+
+============================================================
+STEP 3: MISSING VALUES
+============================================================
+Pregnancies                 0
+Glucose                     0
+BloodPressure               0
+SkinThickness               0
+Insulin                     0
+BMI                         0
+DiabetesPedigreeFunction    0
+Age                         0
+Outcome                     0
+dtype: int64
+
+============================================================
+STEP 4: STATISTICAL SUMMARY
+============================================================
+       Pregnancies     Glucose  BloodPressure  ...  DiabetesPedigreeFunction         Age     Outcome
+count   768.000000  768.000000     768.000000  ...                768.000000  768.000000  768.000000
+mean      3.427083  119.071615      68.527344  ...                  0.496844   32.207031    0.348958
+std       1.904471   29.926225      18.559585  ...                  0.486385    9.663712    0.476951
+min       0.000000   39.000000       9.000000  ...                  0.078000   21.000000    0.000000
+25%       2.000000   99.000000      56.000000  ...                  0.136750   23.000000    0.000000
+50%       3.000000  117.000000      69.000000  ...                  0.321000   31.000000    0.000000
+75%       5.000000  137.000000      81.000000  ...                  0.716500   39.000000    1.000000
+max      11.000000  200.000000     122.000000  ...                  2.420000   69.000000    1.000000
+
+[8 rows x 9 columns]
+
+============================================================
+STEP 5: OUTCOME DISTRIBUTION
+============================================================
+Outcome
+0    500
+1    268
+Name: count, dtype: int64
+
+Percentage:
+Outcome
+0    65.104167
+1    34.895833
+Name: proportion, dtype: float64
+
+============================================================
+STEP 6: CORRELATION WITH OUTCOME
+============================================================
+Outcome                     1.000000
+Glucose                     0.512786
+Age                         0.373251
+BMI                         0.308020
+Insulin                     0.277130
+DiabetesPedigreeFunction    0.013162
+BloodPressure               0.000394
+SkinThickness              -0.007036
+Pregnancies                -0.016447
+Name: Outcome, dtype: float64
+C:\Users\acer\Downloads\Analytics Internship\eda_visualization-1.py:79: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.countplot(x='Outcome', data=df, ax=axes[0, 0], palette='Set2')
+C:\Users\acer\Downloads\Analytics Internship\eda_visualization-1.py:81: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator. Otherwise, ticks may be mislabeled.
+  axes[0, 0].set_xticklabels(['No Diabetes', 'Diabetes'])
+C:\Users\acer\Downloads\Analytics Internship\eda_visualization-1.py:88: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(x='Outcome', y='Glucose', data=df, ax=axes[0, 2], palette='Set3')
+C:\Users\acer\Downloads\Analytics Internship\eda_visualization-1.py:90: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator. Otherwise, ticks may be mislabeled.
+  axes[0, 2].set_xticklabels(['No Diabetes', 'Diabetes'])
+
+
+Graphs saved as 'eda_results.png' in the same folder!
+Traceback (most recent call last):
+  File "C:\Users\acer\Downloads\Analytics Internship\eda_visualization-1.py", line 108, in <module>
+    plt.show()
+    ~~~~~~~~^^
+  File "C:\Users\acer\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\matplotlib\pyplot.py", line 646, in show
+    return _get_backend_mod().show(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\acer\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\matplotlib\backend_bases.py", line 3702, in show
+    cls.mainloop()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\acer\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\matplotlib\backends\_backend_tk.py", line 582, in start_main_loop
+    first_manager.window.mainloop()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\acer\AppData\Local\Python\pythoncore-3.14-64\Lib\tkinter\__init__.py", line 1613, in mainloop
+    self.tk.mainloop(n)
+    ~~~~~~~~~~~~~~~~^^^
+KeyboardInterrupt
+PS C:\Users\acer\Downloads\Analytics Internship> 
+               
+
+
+
+
+
+
+
+
